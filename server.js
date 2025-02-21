@@ -3,7 +3,12 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: "*", // Allow all origins
+    methods: ["GET", "POST"], // Allow specific HTTP methods
+    allowedHeaders: ["Content-Type"] // Allow specific headers
+  }));
+  
 app.use(express.json()); // Middleware to parse JSON requests
 
 const PORT = process.env.PORT || 5000;
@@ -12,6 +17,7 @@ const PORT = process.env.PORT || 5000;
 app.get("/bfhl", (req, res) => {
   res.status(200).json({ operation_code: 1 });
 });
+  
 
 // Route: POST /bfhl (Processes Input)
 app.post("/bfhl", (req, res) => {
@@ -34,9 +40,9 @@ app.post("/bfhl", (req, res) => {
     // Response JSON
     res.status(200).json({
       is_success: true,
-      user_id: "john_doe_17091999", // Replace with actual user ID format
-      email: "john@xyz.com", // Replace with actual email
-      roll_number: "ABCD123", // Replace with actual roll number
+      user_id: "balaji_08102000", // Replace with actual user ID format
+      email: "22bit70004@cuchd.in", // Replace with actual email
+      roll_number: "22BIT70004", // Replace with actual roll number
       numbers,
       alphabets,
       highest_alphabet: highestAlphabet,
@@ -45,6 +51,12 @@ app.post("/bfhl", (req, res) => {
     res.status(500).json({ is_success: false, message: "Internal Server Error" });
   }
 });
+
+// Default Route: Root Path
+app.get("/", (req, res) => {
+    res.send("Backend is running! Try accessing /bfhl");
+  });
+  
 
 // Start the server
 app.listen(PORT, () => {

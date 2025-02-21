@@ -1,0 +1,27 @@
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}
+
+h3 {
+  margin-top: 20px;
+}
