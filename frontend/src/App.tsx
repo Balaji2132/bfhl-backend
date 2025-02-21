@@ -28,22 +28,17 @@ function App() {
       }
       setError("");
   
-      // Make POST request to backend
+      // Call backend API
       const response = await axios.post(
-        "https://bfhl-backend-bmhkmorib-balaji2132s-projects.vercel.app/bfhl",
-        parsedData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        "https://bfhl-backend-five-brown.vercel.app/bfhl",
+        parsedData
       );
-  
       setResponseData(response.data);
-    } catch (err) {
+    } catch (err: any) {  // Explicitly specify type as 'any'
       setError(err.message);
     }
   };
+  
   
 
   return (
